@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClassName = "com.game.Display"
+}
+
+group = 'com.game'
+version = '0.01'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+task useGradleWrapper(type:Wrapper)
+
+jar {
+    manifest {
+        attributes( 'Main-Class': 'com.game.Display')
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
