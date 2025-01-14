@@ -15,7 +15,7 @@ public class Display extends Canvas implements Runnable {
     public static final int WIDTH    = 800;
     public static final int HEIGHT   = 600;
     public static final double FPS   = 60;
-    public static final String TITLE = "3D Game 0.01";
+    public static final String TITLE = "3D Game 0.02";
 
     private Thread thread;
     private boolean running = false;
