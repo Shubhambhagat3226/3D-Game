@@ -26,15 +26,7 @@ public class Screen extends Render {
             pixels[i] = 0;
         }
 
-        for (int i = 0; i < 50; i++) {
-
-//            int anim0 = (int) (Math.sin(System.currentTimeMillis() % 1000.0 / 1000 * Math.PI * 2) * 100);
-            int anim  = (int) (Math.sin((game.time + i * 2) % 1000.0 / 100) * 100);
-            int anim2 = (int) (Math.cos((game.time + i * 2) % 1000.0 / 100) * 100);
-//            draw(test, (width - 256)/2 + anim, (height - 256)/2 - anim2);
-        }
-
-        render3D.floor();
+        render3D.floor(game);
         draw(render3D, 0, 0);
 
     }
