@@ -4,7 +4,9 @@ import java.awt.event.*;
 
 public class InputHandler implements KeyListener, MouseListener, MouseMotionListener, FocusListener {
 
-    public boolean[] key = new boolean[68836];
+    public boolean forward, back,
+            left, right,
+            turnLeft, turnRight;
 
 
     // FOCUS-LISTER STUFF
@@ -21,16 +23,48 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
     // KEY-LISTENER STUFF
     @Override
     public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (keyCode > 0 && keyCode < key.length) {
-            key[keyCode] = true;
+        int code = e.getKeyCode();
+
+        if (code == KeyEvent.VK_W) {
+            forward = true;
+        }
+        if (code == KeyEvent.VK_S) {
+            back = true;
+        }
+        if (code == KeyEvent.VK_A) {
+            left = true;
+        }
+        if (code == KeyEvent.VK_D) {
+            right = true;
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            turnLeft = true;
+        }
+        if (code == KeyEvent.VK_RIGHT) {
+            turnRight = true;
         }
     }
     @Override
     public void keyReleased(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (keyCode > 0 && keyCode < key.length) {
-            key[keyCode] = false;
+        int code = e.getKeyCode();
+
+        if (code == KeyEvent.VK_W) {
+            forward = false;
+        }
+        if (code == KeyEvent.VK_S) {
+            back = false;
+        }
+        if (code == KeyEvent.VK_A) {
+            left = false;
+        }
+        if (code == KeyEvent.VK_D) {
+            right = false;
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            turnLeft = false;
+        }
+        if (code == KeyEvent.VK_RIGHT) {
+            turnRight = false;
         }
     }
     @Override

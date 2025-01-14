@@ -4,31 +4,29 @@ public class Controller {
 
     public double x, z, rotation, xa, za, rotationA;
 
-    public void tick(boolean forward, boolean back,
-                     boolean left, boolean right,
-                     boolean turnLeft, boolean turnRight) {
+    public void tick(InputHandler input) {
 
         double rotationSpeed = 0.025;
         double walkSpeed     = 1;
         double xMove         = 0;
         double zMove         = 0;
 
-        if (forward) {
+        if (input.forward) {
             zMove++;
         }
-        if (back) {
+        if (input.back) {
             zMove--;
         }
-        if (left) {
+        if (input.left) {
             xMove--;
         }
-        if (right) {
+        if (input.right) {
             xMove++;
         }
-        if (turnLeft) {
+        if (input.turnLeft) {
             rotationA -= rotationSpeed;
         }
-        if (turnRight) {
+        if (input.turnRight) {
             rotationA += rotationSpeed;
         }
 
