@@ -2,6 +2,7 @@ package com.game;
 
 import com.game.graphics.Render;
 import com.game.graphics.Screen;
+import com.game.input.InputHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,17 +25,25 @@ public class Display extends Canvas implements Runnable {
     private BufferedImage img;
     private int[] pixels;
 
+    private InputHandler input;
+
 
     public Display(){
         Dimension size = new Dimension(WIDTH, HEIGHT);
         setPreferredSize(size);
         setMinimumSize(size);
         setMaximumSize(size);
+
         screen = new Screen(WIDTH, HEIGHT);
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData();
         game = new Game();
 
+        input = new InputHandler();
+        addKeyListener(input);
+        addFocusListener(input);
+        addMouseListener(input);
+        addMouseMotionListener(input);
     }
     // START
     private void start() {
@@ -130,7 +139,7 @@ public class Display extends Canvas implements Runnable {
     }
     private void tick() {
 
-        game.tick();
+        game.tick(input.key);
     }
     private void render() {
 

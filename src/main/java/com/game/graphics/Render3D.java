@@ -13,10 +13,10 @@ public class Render3D extends Render{
         double floorPosition   = 8;
         double ceilingPosition = 8;
 
-        double forward = game.time / 5.0;
-        double right   = game.time / 5.0;
+        double forward = game.controller.z;
+        double right   = game.controller.x;
 
-        double rotation = 0;
+        double rotation = game.controller.rotation;
         double cosine   = Math.cos(rotation);
         double sine     = Math.sin(rotation);
 
